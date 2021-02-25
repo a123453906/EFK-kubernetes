@@ -5,14 +5,16 @@ metadata:
   labels:
     type: local
 spec:
+  volumeMode: Filesystem
   capacity:
     storage: 50Gi
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Delete
   storageClassName: local-storage
-  local:
-    path: /data/volume1/pv1
+  hostPath:
+    path: /run/desktop/mnt/host/d/Documents/Github/EFK-kubernetes/pv/pv1
+    type: DirectoryOrCreate
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -20,4 +22,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - worker
+          - docker-desktop

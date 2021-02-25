@@ -1,0 +1,13 @@
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+  - role: control-plane
+    extraMounts:
+      - hostPath: /run/desktop/mnt/host/d/Documents/Github/EFK-kubernetes/pv/pv0
+        containerPath: /pv0
+      - hostPath: /run/desktop/mnt/host/d/Documents/Github/EFK-kubernetes/pv/pv1
+        containerPath: /pv1
+      - hostPath: /run/desktop/mnt/host/d/Documents/Github/EFK-kubernetes/pv/pv2
+        containerPath: /pv2
+      - hostPath: /var/log
+        containerPath: /var/log
